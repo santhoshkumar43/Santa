@@ -11,31 +11,38 @@
     flex-direction: column;
     justify-content: space-between;
     width: 20%;
-    height: 110vh;
+    height: 120vh;
     background-color: black;
     border-radius: 30px;
     color: white;
 }
 
 .in-nav-dash {
-    margin: 30px;
+    margin: 50px;
 
 }
 
 .in-nav-dash h1 {
     font-size: 36px;
     font-weight: 700;
+    margin-bottom: 50px;
 }
 
 .in-nav-dash a {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top:20px ;
+    font-size: 18px;
 }
+.in-nav-dash a:hover{
 
+    font-weight: bold;
+}
 .in-nav-dash img {
 
     height: 30px;
+    margin-right: 10px;
 }
 
 
@@ -46,7 +53,7 @@
     justify-content: space-between;
     padding: 10px;
 
-    width: 73%;
+    width: 75%;
 }
 
 .top-cont-dash {
@@ -61,6 +68,43 @@
     justify-content: space-between;
     width: 30%;
 
+}
+.search-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+.search-bar button{
+    border: 0px solid;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+.search-bar input{
+
+}
+.useric{
+    border: 0px;
+    cursor: pointer;
+
+}
+.opt{
+    display: none;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: 100px;
+    right:6vh;
+}
+.opt p{
+    font-weight: 500;
+    cursor: pointer;
+}
+.useric img{
+    border-radius: 50%;
 }
 
 .logo-dash h1 {
@@ -132,6 +176,18 @@
     border-radius: 20px;
     background-color: #FFFFFF;
 }
+.head-graph-cont-dash{
+    display: flex;
+    flex-direction: column;
+}
+.head-graph-cont-dash select{
+    height: 30px;
+
+    width: fit-content;
+    /* margin: 20px 20px; */
+    border: 0px solid;
+    color: gray;
+}
 .charts-cont-dash{
     display: flex;
     flex-direction: row;
@@ -140,10 +196,10 @@
 }
 .pie-graph{
     height:230px ;
-    width: 48%;
+    width: 45%;
     background-color: #FFFFFF;
     border-radius: 20px;
-    padding: 10px;
+    padding: 20px;
 
 }
 .in-pie-graph{
@@ -155,15 +211,58 @@
 }
 
 .in-pie-graph select {
+    border: 0px solid;
     height: 20px;
-    
+    color: gray;
 }
 .in-pie-graph h3{
     margin: 0px;
 }
 .todo{
+    display: flex;
+    flex-direction: column;
     width: 45%;
+    height: 230px;
     background-color: #FFFFFF;
     border-radius: 20px;
+    padding: 20px;
+
+}
+.cont-todo{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.head-todo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 20px;
+}
+.todo-ticket{
+    display: flex;
+    flex-direction: row;
+    margin: 0px 20px;
+
+}
+.todo-ticket p{
+    margin: 5px 0px;
+    margin: 0px;
+}
+.a-col-todo{
+    background: #9BDD7C;
+    width: 6px;
+    height:auto;
+    margin-right: 10px;
+
+
+}
+.b-col-todo{
+    background: #6972C3;
+    width: 6px;
+    height: auto;
+    margin-right: 10px;
 
 }

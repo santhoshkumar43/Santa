@@ -12,6 +12,7 @@ ChartJS.register(
 function Graph(){
 
   const [wet, setwet] =useState([]);
+  const [ tim, settim] = useState([])
   function getAccess(){
     
     async function fetchData(){
@@ -28,13 +29,21 @@ function Graph(){
         });
         setwet(item)
     })
-    
+    fetchData().then((data)=>{
+        const time = data
+        
+        .map((time)=>{
+            return time.dt_txt
+            
+        });
+        settim(time)
+    })
 
 }
 useEffect(()=>{
     getAccess();
 },[])
-console.log(wet)
+
 
     const chartdata = {
         labels: ["Newly Added", "Edited", "Deleted"],

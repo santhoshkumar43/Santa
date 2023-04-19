@@ -1,9 +1,28 @@
 import React from "react";
 import "./Login.css";
 import google from "../../imagee/google (2).png";
-import apple from "../../imagee/apple.png"
+import apple from "../../imagee/apple.png";
+import {auth, provider} from "../../firebase.js";
+import {signInWithPopup} from "firebase/auth";
+import {useNavigate} from "react-router-dom"
 
-function Login() {
+function Login({setIsAuth}) {
+
+    let navigate = useNavigate();
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem("isAuth", true);
+      localStorage.setItem("name",auth.currentUser.displayName);
+      localStorage.setItem("photoURL", auth.currentUser.photoURL)
+      setIsAuth(true);
+      navigate("/Dashboard");
+    });
+  };
+
+
+
+
     return (
         <div className="main-login">
             <div className="banner-login">
@@ -16,7 +35,7 @@ function Login() {
                         <h1>Sign in</h1>
                         <p className="desc-login">Sign in to your account</p>
 
-                        <div className="in-heading-login"> <button><img src={google}/><p>Sign in with Google</p></button>
+                        <div className="in-heading-login"> <button onClick={signInWithGoogle}><img src={google}/><p>Sign in with Google</p></button>
                             <button><img src={apple}/><p>Sign in with Apple</p></button></div>
                     </div>
                     <div className="input-login">

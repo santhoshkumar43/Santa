@@ -9,24 +9,32 @@ ChartJS.register(
     Title, Tooltip, LineElement, Legend,
     CategoryScale, LinearScale, PointElement, Filler
 )
-function LineGraph(){
+function LineGraph({search}){
 
     
     const [wet, setwet] =useState([]);
-    const [ tim, settim] = useState([])
+    const [ tim, settim] = useState([]);
+
+    const [del, setdel] =useState([]);
+    const [ timdel, settimdel] = useState([]);
+    
+    console.log(search)
+    
 
     
     
     function getAccess(){
-        async function fetchData(){
-            const result = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=kolkata&appid=418980fd544d800ef66538c1f8140ef6`)
+        
+        async function fetchData(value){
+            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&appid=418980fd544d800ef66538c1f8140ef6`
+            const result = await fetch(url)
             const newData = await result.json();
             
             return newData.list
             
         }
 
-        fetchData().then((data)=>{
+        fetchData("kolkata").then((data)=>{
             const item = data
             .filter(item=>{
                         const timea =item.dt_txt.slice(10,13)
@@ -37,7 +45,7 @@ function LineGraph(){
             });
             setwet(item)
         })
-        fetchData().then((data)=>{
+        fetchData("kolkata").then((data)=>{
             const time = data
             .filter(time=>{
                         const timea =time.dt_txt.slice(10,13)
@@ -49,13 +57,26 @@ function LineGraph(){
             });
             settim(time)
         })
+        fetchData("New Delhi").then((data)=>{
+            const item = data
+            .filter(item=>{
+                        const timea =item.dt_txt.slice(10,13)
+                        if(timea == 12 ){return item}
+                    })
+            .map((item)=>{
+                return Math.floor(item.main.temp - 270)
+            });
+            setdel(item)
+        })
+
     }
     useEffect(()=>{
+       
         getAccess();
-    },[])
+        
+    },[search])
 
-    console.log(tim)
-    console.log(wet)
+    
     
     
     
@@ -65,19 +86,19 @@ function LineGraph(){
         labels: tim ,
         datasets: [
             {
-                label: "First Dataset",
+                label: "Kolkata",
                 data: wet,
                 borderColor: '#E9A0A0',
                 tension: 0.4,
 
-                pointStyle: 'rect',
+            
 
                 pointBackgroundColor: '#E9A0A0',
                 showLine: true
             }
             , {
-                label: "second Dataset",
-                data: [10, 20, 30, 42, 51, 82, 31, 59, 61, 73, 91, 58],
+                label: "new Delhi",
+                data: del,
 
                 borderColor: '#9BDD7C',
                 tension: 0.4,
@@ -87,18 +108,7 @@ function LineGraph(){
                 pointBackgroundColor: '#9BDD7C',
                 showLine: true
             },
-            {
-                label: "Third Dataset",
-                data: [10, 20, 60, 42, 51, 82, 31, 59, 61, 73, 91, 58],
-
-                borderColor: '#f96a5d',
-                tension: 0.4,
-
-
-                pointBorderColor: '#f96a5d',
-                pointBackgroundColor: '#f96a5d',
-                showLine: true
-            }
+         
         ]
     }
     const options = {
@@ -106,6 +116,7 @@ function LineGraph(){
         plugins:{
             
             legend:{
+                align: 'end',
                 position: 'top',
                 labels: {
                     usePointStyle: true,}
