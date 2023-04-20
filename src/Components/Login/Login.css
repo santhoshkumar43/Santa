@@ -57,6 +57,7 @@
     background: #FFFFFF;
     height: 30px;
     border: 0px solid;
+    cursor: pointer;
 
 }
 .in-heading-login img{
@@ -91,6 +92,7 @@
     color: white;
     font-weight: 700;
     font-size: 16px;
+    cursor: pointer;
 
 
 }
@@ -105,4 +107,61 @@ input:focus{
 }
 a{
     text-decoration: none;
+}
+
+
+
+@media screen and ( max-width : 1200px) {
+    .in-cont-login{
+        width: 48%;
+    }
+    
+    
+}
+@media screen and ( max-width : 950px) {
+    .in-cont-login{
+        width: 58%;
+    }
+    
+    
+}
+
+@media screen and ( max-width : 750px) {
+    .in-cont-login{
+        width: 68%;
+    }
+    
+    
+}
+@media screen and ( max-width : 700px) {
+    .main-login{
+        display: flex;
+        flex-direction: column;
+    }
+    .banner-login{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        width: 100%;
+        
+        background-color: rgb(0, 0, 0);
+        height: 30vh;
+    }
+    .container-login{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background: #F5F5F5;
+    ;
+    }
+    .in-cont-login{
+        width:80%;
+    }
+    
+    
+    
 }

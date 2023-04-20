@@ -2,23 +2,23 @@ import React from "react";
 import "./Login.css";
 import google from "../../imagee/google (2).png";
 import apple from "../../imagee/apple.png";
-import {auth, provider} from "../../firebase.js";
-import {signInWithPopup} from "firebase/auth";
-import {useNavigate} from "react-router-dom"
+import { auth, provider } from "../../firebase.js";
+import { signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom"
 
-function Login({setIsAuth}) {
+function Login({ setIsAuth }) {
 
     let navigate = useNavigate();
 
-  const signInWithGoogle = () => {
-    signInWithPopup(auth, provider).then((result) => {
-      localStorage.setItem("isAuth", true);
-      localStorage.setItem("name",auth.currentUser.displayName);
-      localStorage.setItem("photoURL", auth.currentUser.photoURL)
-      setIsAuth(true);
-      navigate("/Dashboard");
-    });
-  };
+    const signInWithGoogle = () => {
+        signInWithPopup(auth, provider).then((result) => {
+            localStorage.setItem("isAuth", true);
+            localStorage.setItem("name", auth.currentUser.displayName);
+            localStorage.setItem("photoURL", auth.currentUser.photoURL)
+            setIsAuth(true);
+            navigate("/Dashboard");
+        });
+    };
 
 
 
@@ -35,14 +35,14 @@ function Login({setIsAuth}) {
                         <h1>Sign in</h1>
                         <p className="desc-login">Sign in to your account</p>
 
-                        <div className="in-heading-login"> <button onClick={signInWithGoogle}><img src={google}/><p>Sign in with Google</p></button>
-                            <button><img src={apple}/><p>Sign in with Apple</p></button></div>
+                        <div className="in-heading-login"> <button onClick={signInWithGoogle}><img src={google} /><p>Sign in with Google</p></button>
+                            <button><img src={apple} /><p>Sign in with Apple</p></button></div>
                     </div>
                     <div className="input-login">
                         <p>Email address</p>
-                        <input type="email" />
+                        <input placeholder="johndoe@gmail.com" type="email" />
                         <p>Paswword</p>
-                        <input type="password" />
+                        <input type="password" placeholder="••••••••" />
                         <p><a href="#">Forget password</a></p>
                         <button>Sign in</button>
 

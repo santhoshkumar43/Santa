@@ -11,39 +11,6 @@ ChartJS.register(
 )
 function Graph(){
 
-  const [wet, setwet] =useState([]);
-  const [ tim, settim] = useState([])
-  function getAccess(){
-    
-    async function fetchData(){
-        const result = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=kolkata&appid=418980fd544d800ef66538c1f8140ef6`)
-        const newData = await result.json();
-        
-        return newData.list
-        
-    }
-
-    fetchData().then((data)=>{
-        const item = data.map((item)=>{
-            return Math.floor(item.main.temp - 270)
-        });
-        setwet(item)
-    })
-    fetchData().then((data)=>{
-        const time = data
-        
-        .map((time)=>{
-            return time.dt_txt
-            
-        });
-        settim(time)
-    })
-
-}
-useEffect(()=>{
-    getAccess();
-},[])
-
 
     const chartdata = {
         labels: ["Newly Added", "Edited", "Deleted"],
@@ -57,7 +24,7 @@ useEffect(()=>{
               "#00A6B4",
               "#6800B4",
             ],
-            data: [wet[0], wet[1], wet[2]],
+            data: [47,20,33],
             hoverOffset: 4
           },
         ],
@@ -69,8 +36,12 @@ useEffect(()=>{
             legend:{
                 
                 position: 'right',
+                
                 labels: {
-                    usePointStyle: true,}
+                    usePointStyle: true,
+                    
+                }
+                
             }
         },
         maintainAspectRatio: false,

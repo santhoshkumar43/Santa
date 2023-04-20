@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState, useRef } from "react";
 import "./Dashboard.css";
-import { useState, useRef } from "react";
 import Graph from "../Graphs/Graph";
 import notification from "../../imagee/notification.png";
 import LineGraph from "../Graphs/LineGraph";
@@ -11,13 +10,17 @@ import settings from "../../imagee/settings.png"
 import dashboard from "../../imagee/dashboard.png";
 import searchic from "../../imagee/search.png";
 import { signOut } from "firebase/auth";
-import { auth } from "../../firebase"
-import { useNavigate } from "react-router-dom";
+import { auth } from "../../firebase";
+import temperature from "../../imagee/temperature.png";
+import feels from "../../imagee/feels.png";
+import humidity from "../../imagee/humidity.png";
+import pressure from "../../imagee/pressure.png"
+
 
 function Dashboard({ setIsAuth, isAuth }) {
 
 
-
+    const [wet, setwet] = useState([]);
     const [setter, setsetter] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
     const divRef = useRef(null);
@@ -33,6 +36,29 @@ function Dashboard({ setIsAuth, isAuth }) {
             window.location.pathname = "/"
         });
     };
+    function getAccess() {
+
+        async function fetchData() {
+            const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=kolkata&appid=418980fd544d800ef66538c1f8140ef6`)
+            const newData = await result.json();
+
+            return newData
+
+        }
+
+        fetchData().then((data) => {
+            setwet(data.main)
+            const item = data.map((item) => {
+                return item
+            });
+            setwet(item)
+        })
+    }
+    useEffect(() => {
+        getAccess();
+
+    }, [])
+    console.log(wet)
 
 
 
@@ -81,32 +107,43 @@ function Dashboard({ setIsAuth, isAuth }) {
                     </div>
                 </div>
                 <div className="val-cont-dash">
-                    <div className="a-val-cont-dash">
-                        <p>Total Contries</p>
-                        <b>hello</b>
+                    <div className=" cont a-val-cont-dash">
+
+                        <div className="in-val-cont-dash">
+                            <img src={temperature} />
+                            <p> Temperature</p>
+                            <b>{Math.floor(wet.temp) - 270}<sup>0</sup> C</b>
+                        </div>
                     </div>
-                    <div className="b-val-cont-dash">
-                        <p>Total Revenue</p>
-                        <b>$222000</b>
+                    <div className=" cont b-val-cont-dash">
+                        <div className="in-val-cont-dash">
+                            <img src={feels} />
+                            <p>Fells Like</p>
+                            <b>{Math.floor(wet.feels_like) - 270}<sup>0</sup> C</b>
+                        </div>
                     </div>
-                    <div className="c-val-cont-dash">
-                        <p>Total Revenue</p>
-                        <b>$222000</b>
+                    <div className=" cont c-val-cont-dash">
+                        <div className="in-val-cont-dash">
+                            <img src={humidity} />
+                            <p>Humidity</p>
+                            <b>{wet.humidity} </b></div>
                     </div>
-                    <div className="d-val-cont-dash">
-                        <p>Total Revenue</p>
-                        <b>$222000</b>
+                    <div className=" cont d-val-cont-dash">
+                        <div className="in-val-cont-dash">
+                            <img src={pressure} />
+                            <p>Pressure</p>
+                            <b> {wet.pressure} </b></div>
                     </div>
 
                 </div>
                 <div className="graph-cont-dash">
                     <div className="head-graph-cont-dash">
-                        <h2>Activities</h2>
+                        <h2>Temperature</h2>
                         <select>
                             <option>Select the city</option>
                             <option>Kolkata</option>
                             <option>New delhi</option>
-                            
+
                         </select>
                     </div>
                     <div className="in-graph-cont-dash">

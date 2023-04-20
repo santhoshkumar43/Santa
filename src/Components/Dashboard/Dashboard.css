@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 6vh;
+    padding: 5vh;
     background: #f5f5f5;
 }
 
@@ -11,14 +11,14 @@
     flex-direction: column;
     justify-content: space-between;
     width: 20%;
-    height: 120vh;
+    height: 130vh;
     background-color: black;
     border-radius: 30px;
     color: white;
 }
 
 .in-nav-dash {
-    margin: 50px;
+    margin: 40px;
 
 }
 
@@ -97,7 +97,7 @@
     border-radius: 10px;
     position: absolute;
     top: 100px;
-    right:6vh;
+    right:5vh;
 }
 .opt p{
     font-weight: 500;
@@ -130,24 +130,42 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+   
+  
 
 }
 
-.val-cont-dash div {
+.val-cont-dash .cont {
+    
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 23%;
+    
+    width: 20%;
     height: 120px;
     border-radius: 20px;
+    padding: 10px;
+    
     
 }
 .val-cont-dash b{
     font-size: 24px;
 }
+.val-cont-dash img{
+    float: right;
+    height: 30px;
+    margin-right: 10px;
+}
+.in-val-cont-dash{
+    margin: 10px;
+    width:100%;
+}
 .a-val-cont-dash {
+    
     background: #DDEFE0;
 
+}
+.a-val-cont-dash p{
+    width: 100%;
 }
 
 .b-val-cont-dash {
@@ -265,4 +283,104 @@
     height: auto;
     margin-right: 10px;
 
+}
+
+@media screen and ( max-width : 1250px) {
+    .todo{
+        width: 40%;
+        font-size:smaller;
+    }
+    .nav-dash {
+        
+        width: 20%;
+        height: 130vh;
+        background-color: black;
+        border-radius: 30px;
+        color: white;
+    }
+    
+    .in-nav-dash {
+        margin: 30px;
+    
+    }
+    .in-nav-dash a{
+        font-size: 15px;
+    }
+    .in-nav-dash h1{
+        font-size: 30px;
+    }
+
+    
+    
+    
+}
+
+@media screen and ( max-width : 800px) {
+
+    .todo{
+        width: 40%;
+        font-size:small;
+    }
+    .nav-dash {
+        
+        width: 25%;
+        height: 130vh;
+        
+    }
+    
+    .in-nav-dash {
+        margin: 27px;
+    
+    }
+    .in-nav-dash a{
+        font-size: 13px;
+    }
+    .in-nav-dash h1{
+        font-size: 30px;
+    }
+    .main-dash {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 3vh;
+        background: #f5f5f5;
+    }
+
+    
+    
+    
+}
+@media screen and ( max-width : 1000px) {
+
+    .todo{
+        width: 40%;
+    }
+    .nav-dash {
+        
+        width: 25%;
+        height: 130vh;
+        
+    }
+    
+    .in-nav-dash {
+        margin: 27px;
+    
+    }
+    .in-nav-dash a{
+        font-size: 13px;
+    }
+    .in-nav-dash h1{
+        font-size: 30px;
+    }
+    .main-dash {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 3vh;
+        background: #f5f5f5;
+    }
+
+    
+    
+    
 }
