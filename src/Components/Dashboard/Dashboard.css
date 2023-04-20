@@ -290,6 +290,9 @@
         width: 40%;
         font-size:smaller;
     }
+    .pie-graph{
+        width: 40%;
+    }
     .nav-dash {
         
         width: 20%;
@@ -315,55 +318,55 @@
     
 }
 
+@media screen and ( max-width : 1000px) {
+
+    
+    .nav-dash {
+        
+        width: 25%;
+        height: 130vh;
+        
+    }
+    
+    .in-nav-dash {
+        margin: 27px;
+    
+    }
+    .in-nav-dash a{
+        font-size: 13px;
+    }
+    .in-nav-dash h1{
+        font-size: 30px;
+    }
+    .main-dash {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 3vh;
+        background: #f5f5f5;
+    }
+
+    
+    
+    
+}
 @media screen and ( max-width : 800px) {
 
     .todo{
         width: 40%;
-        font-size:small;
     }
-    .nav-dash {
-        
-        width: 25%;
-        height: 130vh;
-        
-    }
-    
-    .in-nav-dash {
-        margin: 27px;
-    
-    }
-    .in-nav-dash a{
-        font-size: 13px;
-    }
-    .in-nav-dash h1{
-        font-size: 30px;
-    }
-    .main-dash {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 3vh;
-        background: #f5f5f5;
-    }
-
-    
-    
-    
-}
-@media screen and ( max-width : 1000px) {
-
-    .todo{
+    .pie-graph{
         width: 40%;
     }
     .nav-dash {
         
-        width: 25%;
+        width: 23%;
         height: 130vh;
         
     }
     
     .in-nav-dash {
-        margin: 27px;
+        margin: 20px;
     
     }
     .in-nav-dash a{
@@ -376,7 +379,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 3vh;
+        padding: 1vh;
         background: #f5f5f5;
     }
 
@@ -384,3 +387,4 @@
     
     
 }
+
