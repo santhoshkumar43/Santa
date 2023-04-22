@@ -1,4 +1,4 @@
-import React, { useEffect,useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Dashboard.css";
 import Graph from "../Graphs/Graph";
 import notification from "../../imagee/notification.png";
@@ -14,15 +14,16 @@ import { auth } from "../../firebase";
 import temperature from "../../imagee/temperature.png";
 import feels from "../../imagee/feels.png";
 import humidity from "../../imagee/humidity.png";
-import pressure from "../../imagee/pressure.png"
+import pressure from "../../imagee/pressure.png";
+import {useNavigate} from "react-router-dom"
 
 
 function Dashboard({ setIsAuth, isAuth }) {
-
-
+    let navigate = useNavigate();
     const [wet, setwet] = useState([]);
     const [setter, setsetter] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
+    const [search, setsearch] = useState("kolkata");
     const divRef = useRef(null);
 
     const handleClick = () => {
@@ -39,7 +40,7 @@ function Dashboard({ setIsAuth, isAuth }) {
     function getAccess() {
 
         async function fetchData() {
-            const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=kolkata&appid=418980fd544d800ef66538c1f8140ef6`)
+            const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=418980fd544d800ef66538c1f8140ef6`)
             const newData = await result.json();
 
             return newData
@@ -56,9 +57,18 @@ function Dashboard({ setIsAuth, isAuth }) {
     }
     useEffect(() => {
         getAccess();
+        if (!isAuth) {
+            navigate("/");
+          }
 
-    }, [])
-    console.log(wet)
+    }, [search])
+
+
+    const selectopt = (event) => {
+        setsearch(event.target.value)
+
+    }
+
 
 
 
@@ -139,16 +149,20 @@ function Dashboard({ setIsAuth, isAuth }) {
                 <div className="graph-cont-dash">
                     <div className="head-graph-cont-dash">
                         <h2>Temperature</h2>
-                        <select>
-                            <option>Select the city</option>
+                        <select onChange={selectopt} >
                             <option>Kolkata</option>
-                            <option>New delhi</option>
+                            <option>Chennai</option>
+                            <option>Hyderabad</option>
+                            <option>Mumbai</option>
+                            <option>Bangalore</option>
+                            <option>Visakhapatnam</option>
+                            <option>Jalandhar</option>
 
                         </select>
                     </div>
                     <div className="in-graph-cont-dash">
 
-                        <LineGraph setter={setter} />
+                        <LineGraph search={search} setter={setter} />
                     </div>
 
 

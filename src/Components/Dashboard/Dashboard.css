@@ -206,6 +206,10 @@
     border: 0px solid;
     color: gray;
 }
+select{
+    border: 0px;
+    outline: none;
+}
 .charts-cont-dash{
     display: flex;
     flex-direction: row;
