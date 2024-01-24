@@ -26,7 +26,7 @@ function Login({ setIsAuth }) {
     return (
         <div className="main-login">
             <div className="banner-login">
-                <p>Board.</p>
+                <p>Santa.</p>
 
             </div>
             <div className="container-login">
