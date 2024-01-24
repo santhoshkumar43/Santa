@@ -77,7 +77,7 @@ function Dashboard({ setIsAuth, isAuth }) {
         <div className="main-dash">
             <div className="nav-dash">
                 <div className="in-nav-dash">
-                    <h1>Board.</h1>
+                    <h1>Santa.</h1>
                     <a><img src={dashboard} /><p>Dashboard</p></a>
                     <a><img src={transaction} /><p>Transition</p></a>
                     <a><img src={schedule} /><p>Schedule</p></a>
